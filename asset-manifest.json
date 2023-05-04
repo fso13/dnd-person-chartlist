@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.1e2cb257.chunk.css",
-    "main.js": "/static/js/main.e0626e79.chunk.js",
-    "main.js.map": "/static/js/main.e0626e79.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c1165258.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c1165258.js.map",
-    "static/js/2.70b677b3.chunk.js": "/static/js/2.70b677b3.chunk.js",
-    "static/js/2.70b677b3.chunk.js.map": "/static/js/2.70b677b3.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.1e2cb257.chunk.css.map": "/static/css/main.1e2cb257.chunk.css.map",
-    "static/js/2.70b677b3.chunk.js.LICENSE.txt": "/static/js/2.70b677b3.chunk.js.LICENSE.txt"
+    "main.css": "/dnd-person-chartlist/static/css/main.1e2cb257.chunk.css",
+    "main.js": "/dnd-person-chartlist/static/js/main.e0626e79.chunk.js",
+    "main.js.map": "/dnd-person-chartlist/static/js/main.e0626e79.chunk.js.map",
+    "runtime-main.js": "/dnd-person-chartlist/static/js/runtime-main.fe67c989.js",
+    "runtime-main.js.map": "/dnd-person-chartlist/static/js/runtime-main.fe67c989.js.map",
+    "static/js/2.70b677b3.chunk.js": "/dnd-person-chartlist/static/js/2.70b677b3.chunk.js",
+    "static/js/2.70b677b3.chunk.js.map": "/dnd-person-chartlist/static/js/2.70b677b3.chunk.js.map",
+    "index.html": "/dnd-person-chartlist/index.html",
+    "static/css/main.1e2cb257.chunk.css.map": "/dnd-person-chartlist/static/css/main.1e2cb257.chunk.css.map",
+    "static/js/2.70b677b3.chunk.js.LICENSE.txt": "/dnd-person-chartlist/static/js/2.70b677b3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c1165258.js",
+    "static/js/runtime-main.fe67c989.js",
     "static/js/2.70b677b3.chunk.js",
     "static/css/main.1e2cb257.chunk.css",
     "static/js/main.e0626e79.chunk.js"
