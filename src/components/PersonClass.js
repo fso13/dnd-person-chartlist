@@ -22,7 +22,6 @@ const PersonClass = (props) => {
   const btnDisbaled = klass !== "";
 
 
-
   const handleClick = (event) => {
     setKlass(event.target.innerHTML);
   };
