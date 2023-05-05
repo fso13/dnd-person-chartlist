@@ -13,7 +13,7 @@ const PersonMagic = (props) => {
   const value = useContext(LabelContext);
   var magicClass = value.personClass.magic;
   const [selectmagicClass, setSelectmagicClass] = React.useState([]);
-  const btnDisbaled = value.spells!== undefined && Array.from(value.spells.values(), x => x.length).reduce((a, b) => a + b, 0) == magicClass.spells.map(({count})=> count).reduce((a, b) => a + b, 0);
+  const btnDisbaled = value.spells !== undefined && Array.from(value.spells.values(), x => x.length).reduce((a, b) => a + b, 0) == magicClass.spells.map(({ count }) => count).reduce((a, b) => a + b, 0);
 
   return (
 
@@ -21,55 +21,60 @@ const PersonMagic = (props) => {
 
       {magicClass.spells.map((spellsItem) => (
 
-        <><h4> Выберите {spellsItem.count}  {spellsItem.title} из списка</h4><View style={{
-          flexDirection: 'row',
-          width: "100%",
-          height: "250px",
-          paddingLeft: 100,
-          paddingRight: 100,
+        <><div style={{
           paddingTop: 20,
           paddingDown: 10,
-
           alignContent: 'center'
-        }}>
+        }}><h4> Выберите {spellsItem.count}  {spellsItem.title} из списка</h4>
+          <View style={{
+            flexDirection: 'column',
+            height: "150px",
+            paddingLeft: 100,
+            paddingRight: 100,
+            paddingTop: 20,
+            paddingDown: 10,
+
+            alignContent: 'center'
+          }}>
 
 
-          <FormGroup
-            aria-label="weight"
-            name="weight"
-            value={spellsItem.items.map(({ name, text }) => { return name })}
-            className="form"
+            <FormGroup
+              aria-label="weight"
+              name="weight"
+              value={spellsItem.items.map(({ name, text }) => { return name })}
+              className="form"
 
-          >
-            {spellsItem.items.map((spellItem) => (
+            >
+              {spellsItem.items.map((spellItem) => (
 
-              <Tooltip title={spellItem.text}>
-                <FormControlLabel
+                <Tooltip title={spellItem.text}>
+                  <FormControlLabel
 
-                  control={<Checkbox />}
-                  label={spellItem.name}
-                  value={spellItem.name}
-                  checked={selectmagicClass.includes(spellItem.name)}
-                  onChange={ event=> {
-                    if (value.spells.get(spellsItem.title) !== undefined && value.spells.get(spellsItem.title).length == spellsItem.count && event.target.checked) {
-                      console.log("незя");
-                    } else {                      
-                      value.setSpellsValue(event, spellsItem.title)
-                      if (event.target.checked) {
-                        setSelectmagicClass([...selectmagicClass, event.target.value]);
+                    control={<Checkbox />}
+                    label={spellItem.name}
+                    value={spellItem.name}
+                    checked={selectmagicClass.includes(spellItem.name)}
+                    onChange={event => {
+                      if (value.spells.get(spellsItem.title) !== undefined && value.spells.get(spellsItem.title).length == spellsItem.count && event.target.checked) {
+                        console.log("незя");
                       } else {
-                        setSelectmagicClass(selectmagicClass.filter(item => item !== event.target.value));
-                      }
-                  
-                      event.preventDefault();
-                    }
-                    
-                  }} />
-              </Tooltip>
-            ))}
+                        value.setSpellsValue(event, spellsItem.title)
+                        if (event.target.checked) {
+                          setSelectmagicClass([...selectmagicClass, event.target.value]);
+                        } else {
+                          setSelectmagicClass(selectmagicClass.filter(item => item !== event.target.value));
+                        }
 
-          </FormGroup>
-        </View></>
+                        event.preventDefault();
+                      }
+
+                    }} />
+                </Tooltip>
+              ))}
+
+            </FormGroup>
+          </View>
+        </div></>
 
       ))}
 
