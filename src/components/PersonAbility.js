@@ -34,21 +34,22 @@ const PersonAbility = (props) => {
   };
 
 
-  console.log(value.personClass);
-  console.log(value.personClass.навыки.items);
   return (
-    <form>
+    <form style={{
+      width: "100%",
+      paddingLeft: 100,
+      paddingRight: 100,
+      paddingTop: 20,
+      paddingDown: 10,
+
+      alignContent: 'center'
+    }}>
       <h4> Выберите {value.personClass.навыки.count} навыка из списка</h4>
       <View style={{
-        flexDirection: 'row',
-        width: "100%",
-        height: "250px",
-        paddingLeft: 100,
-        paddingRight: 100,
-        paddingTop: 20,
-        paddingDown: 10,
 
-        alignContent: 'center'
+        flexDirection: 'column',
+        height: "150px",
+
       }}>
 
         <FormGroup

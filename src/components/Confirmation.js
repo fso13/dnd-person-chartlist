@@ -1,183 +1,86 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { LabelContext } from "../labelDataContext";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import "../styles.css";
-import { upper } from "../common/normalijation";
+import { Races } from "../const/RaceConst";
+import { Text, View } from 'react-native'
 
-const Confirmation = () => {
+const Confirmation = (props) => {
+
   const value = useContext(LabelContext);
-  const [shippingCoast, setshippingCoast] = useState(0);
+  const abylity = value.abylity;
+  const spells = value.spells;
+  const btnDisbaled = true;
+  const joinSpell = Array.from(spells.values()).map(e => e.join('\n')).join('\n')
 
-  useEffect(() => {
-    const weight = value.labelInfo.weight;
-    const shippingOption = value.labelInfo.shippingOption;
-
-    const shippingRate = 0.4,
-      shippingCost = weight * shippingRate * (shippingOption === "1" ? 1 : 1.5);
-
-    const shippingTotal = shippingCost.toFixed(2);
-    setshippingCoast(shippingTotal);
-  }, []);
-  console.log(shippingCoast, "shippingCoast");
-  console.log(value, "value");
   return (
-    <>
-      <h6> Sender Details</h6>
-      <div className="child">
-        <TextField
-          style={{ margin: 8, width: "93%" }}
-          fullWidth
-          value={upper(value.labelInfo.sender.name)}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-        <TextField
-          label="Street Address"
-          fullWidth
-          margin="normal"
-          value={upper(value.labelInfo.sender.street)}
-          style={{ margin: 8, width: "93%" }}
-          InputProps={{
-            readOnly: true
-          }}
-        />
+    <form>
+      <h4> Подтвердите выбранные навыки и заклинания</h4>
 
-        <TextField
-          required
-          style={{ width: "31%", margin: 1 }}
-          label="City"
-          value={upper(value.labelInfo.sender.city)}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-        <TextField
-          required
-          style={{ width: "31%", margin: 1 }}
-          label="State"
-          value={upper(value.labelInfo.sender.state)}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-        <TextField
-          required
-          style={{ width: "31%", margin: 1 }}
-          label="ZipCode"
-          value={value.labelInfo.sender.zipCode}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-      </div>
-      <h6> Recevier Details</h6>
-      <div className="child">
-        <TextField
-          style={{ margin: 8, width: "93%" }}
-          fullWidth
-          value={upper(value.labelInfo.recevier.name)}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-        <TextField
-          style={{ margin: 8, width: "93%" }}
-          label="Street Address"
-          fullWidth
-          margin="normal"
-          value={upper(value.labelInfo.recevier.street)}
-          InputProps={{
-            readOnly: true
-          }}
-        />
+      <View style={{
+        flexDirection: 'row',
+        width: "100%",
+        paddingLeft: 100,
+        paddingRight: 100,
+        paddingTop: 20,
+        paddingDown: 10,
 
-        <TextField
-          required
-          style={{ width: "31%", margin: 1 }}
-          label="City"
-          value={upper(value.labelInfo.recevier.city)}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-        <TextField
-          required
-          style={{ width: "31%", margin: 1 }}
-          label="State"
-          value={upper(value.labelInfo.recevier.state)}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-        <TextField
-          required
-          style={{ width: "31%", margin: 1 }}
-          label="ZipCode"
-          value={value.labelInfo.recevier.zipCode}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-      </div>
-      <h6> weight</h6>
-      <div className="child">
-        <TextField
-          id="standard-full-width"
-          style={{ margin: 8, width: "93%" }}
-          fullWidth
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">lbs:</InputAdornment>
-            ),
-            readOnly: true
-          }}
-          value={value.labelInfo.weight}
-        />
-      </div>
-      <h6> Slected Shipping option</h6>
-      <div className="child">
-        <TextField
-          id="standard-full-width"
-          style={{ margin: 8, width: "93%" }}
-          fullWidth
-          value={value.labelInfo.shippingOption === "1" ? "GROUND" : "PRIOROTY"}
-          InputProps={{
-            readOnly: true
-          }}
-        />
-      </div>
-      <h6>Total shipping Coast</h6>
-      <div className="child">
-        <TextField
-          id="standard-full-width"
-          style={{ margin: 8, width: "93%" }}
-          fullWidth
-          value={shippingCoast}
-          ed
-          InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>,
-            readOnly: true
-          }}
-        />
-      </div>
+        alignContent: 'center'
+      }}>
+        <View style={{
+          flexDirection: 'column',
+          width: "40%",
+          paddingLeft: 100,
+          paddingRight: 100,
+          paddingTop: 20,
+          paddingDown: 10,
+
+          alignContent: 'center'
+        }}>
+        <h5>Навыки</h5>
+
+          <Text style={{ textAlign: 'justify' }}>
+            {abylity.join('\n')}
+          </Text>
+        </View>
+
+        <View style={{
+          flexDirection: 'column',
+          width: "40%",
+          paddingLeft: 100,
+          paddingRight: 100,
+          paddingTop: 20,
+          paddingDown: 10,
+
+          alignContent: 'center'
+        }}>
+        <h5>Заклинания</h5>
+
+          <Text style={{ textAlign: 'justify' }}>
+            {joinSpell}
+          </Text>
+        </View>
+      </View>
+
       <ButtonGroup
         variant="contained"
         color="primary"
         aria-label="text primary button group"
         style={{ marginTop: 15 }}
       >
+
         <Button onClick={() => value.prevPage()} style={{ margin: 25 }}>
-          Previous
+          Предыдущий шаг
         </Button>
-        <Button onClick={() => value.nextPage()} style={{ margin: 25 }}>
-          Confirm
+        <Button
+          disabled={!btnDisbaled}
+          onClick={() => value.nextPage()}
+          style={{ margin: 25 }}
+        >
+          Подтвердить
         </Button>
       </ButtonGroup>
-    </>
+    </form>
   );
 };
 export default Confirmation;

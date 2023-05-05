@@ -31,11 +31,11 @@ const PersonClass = (props) => {
     setКостьХитов(classItem.костьХитов)
     setНачальныеХиты(classItem.начальныеХиты)
     setКлассЗащиты(classItem.классЗащиты)
-    setБроня(classItem.броня.join(','))
-    setОружие(classItem.оружие.join(','))
-    setИнструменты(classItem.инструменты.join(','))
-    setСпасброски(classItem.спасброски.join(','))
-    setНавыки(classItem.навыки.count + ' из списка: ' + classItem.навыки.items.join(','))
+    setБроня(classItem.броня.join(', '))
+    setОружие(classItem.оружие.join(', '))
+    setИнструменты(classItem.инструменты.join(', '))
+    setСпасброски(classItem.спасброски.join(', '))
+    setНавыки(classItem.навыки.count + ' из списка: ' + classItem.навыки.items.join(', '))
   }
   return (
     <form>
@@ -57,7 +57,7 @@ const PersonClass = (props) => {
 
         alignContent: 'center'
       }}>
-          <Text style={{textAlign: 'justify'}}>
+          <Text style={{textAlign: 'left'}}>
           Кость хитов: 1d{костьХитов}{'\n'}
           Начальные хиты: {начальныеХиты} + модификтор телосложения{'\n'}
           Класс защиты: {классЗащиты}{'\n'}
