@@ -9,6 +9,7 @@ import PersonClass from "./components/PersonClass";
 import Confirmation from "./components/Confirmation";
 import GetWeight from "./components/GetWeight";
 import PersonAbility from "./components/PersonAbility";
+import PersonMagic from "./components/PersonMagic";
 import Printonly from "./components/PrintOnly";
 import { LabelContext } from "./labelDataContext";
 
@@ -87,8 +88,9 @@ const App = (props) => {
       {value.page === 1 && <PersonRace />}
       {value.page === 2 && <PersonClass />}
       {value.page === 3 && <PersonAbility />}
-      {value.page === 4 && <Confirmation />}
-      {value.page === 5 && <Printonly />}
+      {value.page === 4 && <PersonMagic />}
+      {value.page === 5 && <Confirmation />}
+      {value.page === 6 && <Printonly />}
     </div>
   );
 };

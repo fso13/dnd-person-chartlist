@@ -3,6 +3,7 @@ import React, { useState, createContext } from "react";
 export const LabelContext = createContext();
 
 export const LabelProvider = (props) => {
+  const [spells, setSpells] = useState(new Map());
   const [abylity, setAbylity] = useState([]);
   const [personClass, setPersonClass] = useState(
     {
@@ -15,9 +16,10 @@ export const LabelProvider = (props) => {
       спасброски: [],
       навыки: {
         count: 0,
-        items:[""],
+        items: [""],
       },
-      классЗащиты: "10 + ловкость"
+      классЗащиты: "10 + ловкость",
+      magic: {}
     }
   );
   const [page, setPage] = useState(0);
@@ -30,7 +32,7 @@ export const LabelProvider = (props) => {
       wis: "",
       cha: ""
     },
-    mod:{
+    mod: {
       str: 0,
       dex: 0,
       con: 0,
@@ -50,7 +52,7 @@ export const LabelProvider = (props) => {
       raceDetails: "",
       class: ""
     },
-     
+
     weight: "",
     shippingOption: "1"
   });
@@ -67,18 +69,32 @@ export const LabelProvider = (props) => {
   };
 
   const setAbylityValue = (event) => {
-    if(event.target.checked){
+    if (event.target.checked) {
       setAbylity([...abylity, event.target.value]);
-    }else{
+    } else {
       setAbylity(abylity.filter(item => item !== event.target.value));
     }
+  };
+
+  const setSpellsValue = (event, key) => {
+
+    if(spells.get(key) === undefined){
+      spells.set(key, []);
+    }
+    if (event.target.checked) {
+      spells.set(key, [...spells.get(key), event.target.value])
+    } else {
+      spells.set(key, spells.get(key).filter(item => item !== event.target.value))
+    }
+
+    console.log(spells);
   };
 
   const setSenderInfoValue = (prop, event) => {
 
     setlabelInfo({
       ...labelInfo,
-      sender: { ...labelInfo.sender, [prop]:event.target.innerHTML }
+      sender: { ...labelInfo.sender, [prop]: event.target.innerHTML }
     });
   };
 
@@ -92,13 +108,15 @@ export const LabelProvider = (props) => {
   const setModRaceValue = (value) => {
     setlabelInfo({
       ...labelInfo,
-      sender: {...labelInfo.sender, "race": value.title},
-      mod: { ...labelInfo.mod, "str": value.str,
-      "dex": value.dex,
-      "con": value.con,
-      "wis": value.wis,
-      "int": value.int,
-      "cha": value.cha, }
+      sender: { ...labelInfo.sender, "race": value.title },
+      mod: {
+        ...labelInfo.mod, "str": value.str,
+        "dex": value.dex,
+        "con": value.con,
+        "wis": value.wis,
+        "int": value.int,
+        "cha": value.cha,
+      }
     });
   };
 
@@ -109,12 +127,14 @@ export const LabelProvider = (props) => {
   const setRandomInfoValue = () => {
     setlabelInfo({
       ...labelInfo,
-      charRandom: { ...labelInfo.charRandom, "str": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
-      "dex": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
-      "con": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
-      "wis": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
-      "int": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
-      "cha": Math.floor(Math.random() * (18 - 8 + 1)) + 8, }
+      charRandom: {
+        ...labelInfo.charRandom, "str": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
+        "dex": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
+        "con": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
+        "wis": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
+        "int": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
+        "cha": Math.floor(Math.random() * (18 - 8 + 1)) + 8,
+      }
     });
   };
 
@@ -129,6 +149,7 @@ export const LabelProvider = (props) => {
     { title: "Раса" },
     { title: "Класс" },
     { title: "Навыки" },
+    { title: "Магия" },
     { title: "Финиш" }
   ];
 
@@ -138,6 +159,7 @@ export const LabelProvider = (props) => {
         page,
         steps,
         abylity,
+        spells,
         personClass,
         nextPage,
         prevPage,
@@ -148,8 +170,9 @@ export const LabelProvider = (props) => {
         setRandomInfoValue,
         setRecevierInfo,
         setModRaceValue,
-        setPersonClassValue,  
-        setAbylityValue     
+        setPersonClassValue,
+        setAbylityValue,
+        setSpellsValue
       }}
     >
       {props.children}

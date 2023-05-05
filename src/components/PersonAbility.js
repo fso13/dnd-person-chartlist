@@ -14,13 +14,7 @@ const PersonAbility = (props) => {
   const btnDisbaled = selectAbylity == value.personClass.навыки.count;
   const setId = (event) => {
 
-    console.log("value.abylity:" + value.abylity);
-    console.log("value.personClass.навыки.count:" + value.personClass.навыки.count);
-    console.log("selectAbylity:" + selectAbylity);
-    console.log("event.target.checked:" + event.target.checked);
-
     if (selectAbylity == value.personClass.навыки.count && event.target.checked) {
-      console.log("незя");
     } else {
       if (event.target.checked) {
         setSelectAbylity(selectAbylity + 1);
@@ -48,6 +42,7 @@ const PersonAbility = (props) => {
       <View style={{
         flexDirection: 'row',
         width: "100%",
+        height: "250px",
         paddingLeft: 100,
         paddingRight: 100,
         paddingTop: 20,
