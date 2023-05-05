@@ -3,164 +3,145 @@ import { LabelContext } from "../labelDataContext";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import "../styles.css";
 import { upper } from "../common/normalijation";
 
 const PrintOnly = () => {
   const value = useContext(LabelContext);
-  const [shippingCoast, setshippingCoast] = useState(0);
 
-  useEffect(() => {
-    const weight = value.labelInfo.weight;
-    const shippingOption = value.labelInfo.shippingOption;
 
-    const shippingRate = 0.4,
-      shippingCost = weight * shippingRate * (shippingOption === "1" ? 1 : 1.5);
+  const ac = () => {
+    switch (value.labelInfo.sender.class) {
+      case "Варвар": return 10 + Number(value.labelInfo.mod.con) + Number(value.labelInfo.mod.dex);
+      default: return 10 + Number(value.labelInfo.mod.dex);
+    }
+  }
 
-    const shippingTotal = shippingCost.toFixed(2);
-    setshippingCoast(shippingTotal);
-  }, []);
-  console.log(shippingCoast, "shippingCoast");
-  console.log(value, "value");
   return (
     <>
-      <h6>Sender Information</h6>
       <div>
-        <div className="child">
-          <TextField
-            style={{ margin: 8, width: "93%" }}
-            fullWidth
-            label="Full Name"
-            value={upper(value.labelInfo.sender.name)}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            label="Street Address"
-            fullWidth
-            margin="normal"
-            value={upper(value.labelInfo.sender.street)}
-            style={{ margin: 8, width: "93%" }}
-            InputProps={{
-              readOnly: true
-            }}
-          />
 
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="City"
-            value={upper(value.labelInfo.sender.city)}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="State"
-            value={upper(value.labelInfo.sender.state)}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="ZipCode"
-            value={value.labelInfo.sender.zipCode}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-        </div>
-        <h6>Recevier Information</h6>
-        <div className="child">
-          <TextField
-            label="Full Name"
-            style={{ margin: 8, width: "93%" }}
-            fullWidth
-            value={upper(value.labelInfo.recevier.name)}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            style={{ margin: 8, width: "93%" }}
-            label="Street Address"
-            fullWidth
-            margin="normal"
-            value={upper(value.labelInfo.recevier.street)}
-            InputProps={{
-              readOnly: true
-            }}
-          />
+        <Grid container spacing={2}>
 
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="City"
-            value={upper(value.labelInfo.recevier.city)}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="State"
-            value={upper(value.labelInfo.recevier.state)}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="ZipCode"
-            value={value.labelInfo.recevier.zipCode}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-        </div>
-        <h6>Shipping Information</h6>
-        <div className="child">
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="Weight **lbs"
-            value={value.labelInfo.weight}
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="Shipping Type"
-            value={
-              value.labelInfo.shippingOption === "1" ? "GROUND" : "PRIOROTY"
-            }
-            InputProps={{
-              readOnly: true
-            }}
-          />
-          <TextField
-            required
-            style={{ width: "31%", margin: 1 }}
-            label="Shiiping Coast"
-            value={shippingCoast}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-              readOnly: true
-            }}
-          />
-        </div>
+          <Grid item xs={4}>
+            <Paper>Имя</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>Раса</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>Класс</Paper>
+          </Grid>
+
+          <Grid item xs={4}>
+            <Paper>{value.labelInfo.sender.name}</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>{value.labelInfo.sender.race}</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>{value.labelInfo.sender.class}</Paper>
+          </Grid>
+
+          <Grid item xs={4}>
+            <Paper>Броня</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>ХП</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>Скорость</Paper>
+          </Grid>
+
+          <Grid item xs={4}>
+            <Paper>{ac()}</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>{value.personClass.начальныеХиты}</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>{ac}</Paper>
+          </Grid>
+
+          <Grid item xs={2}>
+            <Paper>Сила</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>Ловкость</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>Телосложение</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>Интелект</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>Мудрость</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>Харизма</Paper>
+          </Grid>
+
+          <Grid item xs={2}>
+            <Paper>{Number(value.labelInfo.sender.str) + Number(value.labelInfo.mod.str)}</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>{Number(value.labelInfo.sender.dex) + Number(value.labelInfo.mod.dex)}</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>{Number(value.labelInfo.sender.con) + Number(value.labelInfo.mod.con)}</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>{Number(value.labelInfo.sender.int) + Number(value.labelInfo.mod.int)}</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>{Number(value.labelInfo.sender.wis) + Number(value.labelInfo.mod.wis)}</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>{Number(value.labelInfo.sender.cha) + Number(value.labelInfo.mod.cha)}</Paper>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Paper>Навыки</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>Атлетика</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper>Ловкость рук</Paper>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Paper>Заклинания</Paper>
+          </Grid>
+          {Array.from(value.spells.values()).map((i) => (
+
+            i.map((ii) => (
+              <Grid item xs={2}>
+                <Paper>{ii}</Paper>
+              </Grid>
+            ))
+
+          ))}
+
+
+          <Grid item xs={12}>
+            <Paper>Умения</Paper>
+          </Grid>
+
+          {Array.from(value.abylity.values()).map((i) => (
+              <Grid item xs={2}>
+                <Paper>{i}</Paper>
+              </Grid>
+
+          ))}
+
+
+        </Grid>
+
 
         <ButtonGroup
           color="secondery"
