@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { LabelContext } from "../labelDataContext";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import { Races } from "../const/RaceConst";
 import { Text, View } from 'react-native'
 
 const Confirmation = (props) => {
@@ -20,18 +19,11 @@ const Confirmation = (props) => {
       <View style={{
         flexDirection: 'row',
         width: "100%",
-        paddingLeft: 100,
-        paddingRight: 100,
-        paddingTop: 20,
-        paddingDown: 10,
-
         alignContent: 'center'
       }}>
         <View style={{
           flexDirection: 'column',
-          width: "40%",
-          paddingLeft: 100,
-          paddingRight: 100,
+          width: "50%",
           paddingTop: 20,
           paddingDown: 10,
 
@@ -46,9 +38,7 @@ const Confirmation = (props) => {
 
         <View style={{
           flexDirection: 'column',
-          width: "40%",
-          paddingLeft: 100,
-          paddingRight: 100,
+          width: "50%",
           paddingTop: 20,
           paddingDown: 10,
 

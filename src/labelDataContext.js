@@ -5,6 +5,7 @@ export const LabelContext = createContext();
 export const LabelProvider = (props) => {
   const [spells, setSpells] = useState(new Map());
   const [abylity, setAbylity] = useState([]);
+  const [personRace, setPersonRace] =  useState("");
   const [personClass, setPersonClass] = useState(
     {
       title: "",
@@ -110,7 +111,8 @@ export const LabelProvider = (props) => {
       ...labelInfo,
       sender: { ...labelInfo.sender, "race": value.title },
       mod: {
-        ...labelInfo.mod, "str": value.str,
+        ...labelInfo.mod,
+        "str": value.str,
         "dex": value.dex,
         "con": value.con,
         "wis": value.wis,
@@ -120,8 +122,30 @@ export const LabelProvider = (props) => {
     });
   };
 
+  const setModRaceValue2 = (id, value) => {
+    labelInfo.mod[id] = value;
+    setlabelInfo({
+      ...labelInfo,
+      sender: { ...labelInfo.sender, "race": labelInfo.sender.race },
+      mod: {
+        ...labelInfo.mod,
+        "str": labelInfo.mod.str,
+        "dex": labelInfo.mod.dex,
+        "con": labelInfo.mod.con,
+        "wis": labelInfo.mod.wis,
+        "int": labelInfo.mod.int,
+        "cha": labelInfo.mod.cha,
+      }
+    });
+    
+  };
+
   const setPersonClassValue = (value) => {
     setPersonClass(value);
+  };
+
+  const setPersonRaceValue = (value) => {
+    setPersonRace(value);
   };
 
   const setRandomInfoValue = () => {
@@ -161,6 +185,7 @@ export const LabelProvider = (props) => {
         abylity,
         spells,
         personClass,
+        personRace,
         nextPage,
         prevPage,
         labelInfo,
@@ -170,9 +195,11 @@ export const LabelProvider = (props) => {
         setRandomInfoValue,
         setRecevierInfo,
         setModRaceValue,
+        setModRaceValue2,
         setPersonClassValue,
         setAbylityValue,
-        setSpellsValue
+        setSpellsValue,
+        setPersonRaceValue
       }}
     >
       {props.children}

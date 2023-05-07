@@ -1,21 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { LabelContext } from "../labelDataContext";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import "../styles.css";
-import { upper } from "../common/normalijation";
 
 const PrintOnly = () => {
   const value = useContext(LabelContext);
 
-
   const ac = () => {
     switch (value.labelInfo.sender.class) {
       case "Варвар": return 10 + Number(value.labelInfo.mod.con) + Number(value.labelInfo.mod.dex);
+      case "Монах": return 10 + Number(value.labelInfo.mod.wis) + Number(value.labelInfo.mod.dex);
+
       default: return 10 + Number(value.labelInfo.mod.dex);
     }
   }
@@ -46,24 +44,30 @@ const PrintOnly = () => {
             <Paper>{value.labelInfo.sender.class}</Paper>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Paper>Броня</Paper>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Paper>ХП</Paper>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Paper>Скорость</Paper>
           </Grid>
+          <Grid item xs={3}>
+            <Paper>Размер</Paper>
+          </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Paper>{ac()}</Paper>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Paper>{value.personClass.начальныеХиты}</Paper>
           </Grid>
-          <Grid item xs={4}>
-            <Paper>{ac}</Paper>
+          <Grid item xs={3}>
+            <Paper>{value.personRace.speed}</Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper>{value.personRace.size}</Paper>
           </Grid>
 
           <Grid item xs={2}>

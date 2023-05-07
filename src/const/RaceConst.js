@@ -17,7 +17,9 @@ export const Races = [
     con: 2,
     int: 0,
     wis: 0,
-    cha: 0
+    cha: 0,
+    speed: 25,
+    size: "средний"
   },
   {
     title: "Полурослик",
@@ -35,7 +37,9 @@ export const Races = [
   con: 0,
   int: 0,
   wis: 0,
-  cha: 0
+  cha: 0,
+  speed: 25,
+  size: "маленький"
 },
   {
     title: "Человек",
@@ -50,7 +54,10 @@ export const Races = [
   con: 1,
   int: 1,
   wis: 1,
-  cha: 1 },
+  cha: 1 ,
+  speed: 30,
+  size: "средний"
+},
   {
     title: "Эльф",
     description: `Увеличение характеристик. Значение вашей Ловкости увеличивается на 2.
@@ -69,7 +76,9 @@ export const Races = [
   con: 0,
   int: 0,
   wis: 0,
-  cha: 0 
+  cha: 0 ,
+  speed: 30,
+  size: "средний"
 },
   {
     title: "Гном",
@@ -86,7 +95,9 @@ export const Races = [
   con: 0,
   int: 2,
   wis: 0,
-  cha: 0 
+  cha: 0 ,
+  speed: 25,
+  size: "маленький"
 },
   {
     title: "Драконорожденный",
@@ -106,7 +117,9 @@ export const Races = [
   con: 0,
   int: 0,
   wis: 0,
-  cha: 1 
+  cha: 1 ,
+  speed: 30,
+  size: "средний"
 
 },
   {
@@ -126,7 +139,9 @@ export const Races = [
     con: 1,
     int: 0,
     wis: 0,
-    cha: 0
+    cha: 0,
+    speed: 30,
+    size: "средний"
   },
   {
     title: "Полуэльф",
@@ -145,7 +160,9 @@ export const Races = [
     int: 0,
     wis: 0,
     cha: 2,
-    freePoint: [1,1]
+    freePoint: 2,
+    speed: 30,
+    size: "средний"
   },
   {
     title: "Тифлинг",
@@ -163,6 +180,8 @@ export const Races = [
     con: 0,
     int: 1,
     wis: 0,
-    cha: 2
+    cha: 2,
+    speed: 30,
+    size: "средний"
   }
 ];

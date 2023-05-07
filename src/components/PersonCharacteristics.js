@@ -15,62 +15,6 @@ const PersonCharacteristics = (props) => {
     sender.name.length > 0;
   return (
     <div>
-    
-   {/*  <form>
-      <h4> Enter Sender Details</h4>
-      <TextField draggabe="true"
-        required
-        style={{ width: "16%" }}
-        label="Сила"
-        type="number"
-        value={charRandom.str}
-      />
-      <TextField
-        required
-        style={{ width: "16%" }}
-        label="Ловкость"
-        type="number"
-        value={charRandom.dex}
-      />
-      <TextField
-        required
-        style={{ width: "16%" }}
-        label="Телосложение"
-        type="number"
-        value={charRandom.con}
-      />
-      <TextField
-        required
-        style={{ width: "16%" }}
-        label="Интелект"
-        type="number"
-        value={charRandom.int}
-      />
-      <TextField
-        required
-        style={{ width: "16%" }}
-        label="Мудрость"
-        type="number"
-        value={charRandom.wis}
-      />
-      <TextField
-        required
-        style={{ width: "16%" }}
-        label="Харизма"
-        type="number"
-        value={charRandom.cha}
-      />
-      <br></br>
-
-      <Button name="random"
-          onClick={() => value.setRandomInfoValue()}
-          style={{ margin: 25 }}
-        >
-          Сгенерировать значения характеристик
-        </Button>
-    </form> */}
-    
-    
     <form>
       <TextField
         label="Имя персонажа"

@@ -7,7 +7,6 @@ import PersonCharacteristics from "./components/PersonCharacteristics";
 import PersonRace from "./components/PersonRace";
 import PersonClass from "./components/PersonClass";
 import Confirmation from "./components/Confirmation";
-import GetWeight from "./components/GetWeight";
 import PersonAbility from "./components/PersonAbility";
 import PersonMagic from "./components/PersonMagic";
 import Printonly from "./components/PrintOnly";
@@ -17,8 +16,6 @@ const App = (props) => {
   const value = useContext(LabelContext);
   const sender = value.labelInfo.sender;
   const mod = value.labelInfo.mod;
-  var personClass;
-  var personRace;
 
 
   return (

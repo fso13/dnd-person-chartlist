@@ -5,7 +5,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import FormGroup from "@material-ui/core/FormGroup";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { Text, View } from 'react-native'
+import {  View } from 'react-native'
 
 const PersonAbility = (props) => {
 

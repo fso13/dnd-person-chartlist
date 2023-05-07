@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { LabelContext } from "../labelDataContext";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import { Classes } from "../const/ClassConst";
+  import { Classes } from "../const/ClassConst";
 import {  Text,  View } from 'react-native'
 
 const PersonClass = (props) => {
