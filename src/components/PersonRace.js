@@ -31,14 +31,12 @@ const PersonRace = (props) => {
 
     }
 
-    console.log(value.labelInfo);
   };
 
   const handleClick = (event) => {
     setRace(event.target.innerHTML);
   };
   const updateText = (text) => {
-    console.log(text);
     setDescription(text)
   }
   return (

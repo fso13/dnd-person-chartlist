@@ -62,7 +62,7 @@ const PersonAbility = (props) => {
           {value.personClass.навыки.items.map((abylityItem) => (
 
             <FormControlLabel
-
+              row
               control={<Checkbox />}
               label={abylityItem}
               value={abylityItem}

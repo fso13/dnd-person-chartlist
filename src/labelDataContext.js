@@ -4,6 +4,8 @@ export const LabelContext = createContext();
 
 export const LabelProvider = (props) => {
   const [spells, setSpells] = useState(new Map());
+  const [abylity2, setAbylity2] = useState(new Map());
+
   const [abylity, setAbylity] = useState([]);
   const [personRace, setPersonRace] =  useState("");
   const [personClass, setPersonClass] = useState(
@@ -13,6 +15,7 @@ export const LabelProvider = (props) => {
       начальныеХиты: 0,
       броня: [],
       оружие: [],
+      умения: [],
       инструменты: [],
       спасброски: [],
       навыки: {
@@ -88,7 +91,19 @@ export const LabelProvider = (props) => {
       spells.set(key, spells.get(key).filter(item => item !== event.target.value))
     }
 
-    console.log(spells);
+  };
+
+  const setAbylityValue2 = (event, key) => {
+
+    if(abylity2.get(key) === undefined){
+      abylity2.set(key, []);
+    }
+    if (event.target.checked) {
+      abylity2.set(key, [...abylity2.get(key), event.target.value])
+    } else {
+      abylity2.set(key, abylity2.get(key).filter(item => item !== event.target.value))
+    }
+
   };
 
   const setSenderInfoValue = (prop, event) => {
@@ -173,6 +188,7 @@ export const LabelProvider = (props) => {
     { title: "Раса" },
     { title: "Класс" },
     { title: "Навыки" },
+    { title: "Умения" },
     { title: "Магия" },
     { title: "Финиш" }
   ];
@@ -183,6 +199,8 @@ export const LabelProvider = (props) => {
         page,
         steps,
         abylity,
+        abylity2,
+
         spells,
         personClass,
         personRace,
@@ -198,6 +216,7 @@ export const LabelProvider = (props) => {
         setModRaceValue2,
         setPersonClassValue,
         setAbylityValue,
+        setAbylityValue2,
         setSpellsValue,
         setPersonRaceValue
       }}

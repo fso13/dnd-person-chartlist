@@ -8,6 +8,9 @@ const Confirmation = (props) => {
 
   const value = useContext(LabelContext);
   const abylity = value.abylity;
+  const abylity2 = value.personClass.умения.map((name)=> name);
+  const abylity2_det = value.abylity2;
+
   const spells = value.spells;
   const btnDisbaled = true;
   const joinSpell = Array.from(spells.values()).map(e => e.join('\n')).join('\n')
@@ -23,7 +26,7 @@ const Confirmation = (props) => {
       }}>
         <View style={{
           flexDirection: 'column',
-          width: "50%",
+          width: "30%",
           paddingTop: 20,
           paddingDown: 10,
 
@@ -38,7 +41,22 @@ const Confirmation = (props) => {
 
         <View style={{
           flexDirection: 'column',
-          width: "50%",
+          width: "30%",
+          paddingTop: 20,
+          paddingDown: 10,
+
+          alignContent: 'center'
+        }}>
+        <h5>Умения</h5>
+
+          <Text style={{ textAlign: 'justify' }}>
+            {value.personClass.умения.map((aa)=> aa.name + value.abylity2?.get(aa.name)?.map((a)=> " : " + a)).join('\n')}
+          </Text>
+        </View>
+
+        <View style={{
+          flexDirection: 'column',
+          width: "30%",
           paddingTop: 20,
           paddingDown: 10,
 

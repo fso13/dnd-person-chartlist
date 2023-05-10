@@ -2,9 +2,8 @@ import React, { useContext, useState } from "react";
 import { LabelContext } from "../labelDataContext";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-  import { Classes } from "../const/ClassConst";
-import {  Text,  View } from 'react-native'
-
+import { Classes } from "../const/ClassConst";
+import { Text, View } from 'react-native'
 const PersonClass = (props) => {
 
   const value = useContext(LabelContext);
@@ -26,7 +25,6 @@ const PersonClass = (props) => {
     setKlass(event.target.innerHTML);
   };
   const updateText = (classItem) => {
-    console.log(classItem);
     setSelectPersonClass(classItem)
     setКостьХитов(classItem.костьХитов)
     setНачальныеХиты(classItem.начальныеХиты)
@@ -42,7 +40,7 @@ const PersonClass = (props) => {
       <h4> Выберите класс персонажа</h4>
       <div>
         {Classes.map((classItem) => (
-          <Button onClick={(event) => { value.setSenderInfoValue("class", event); handleClick(event); updateText(classItem);}} style={{ margin: 25, backgroundColor: klass === classItem.title ? '#3f51b5' : 'white' }}>
+          <Button onClick={(event) => { value.setSenderInfoValue("class", event); handleClick(event); updateText(classItem); }} style={{ margin: 25, backgroundColor: klass === classItem.title ? '#3f51b5' : 'white' }}>
             {classItem.title}
           </Button>
         ))}
@@ -57,7 +55,7 @@ const PersonClass = (props) => {
 
         alignContent: 'center'
       }}>
-          <Text style={{textAlign: 'left'}}>
+        <Text style={{ textAlign: 'left' }}>
           Кость хитов: 1d{костьХитов}{'\n'}
           Начальные хиты: {начальныеХиты} + модификтор телосложения{'\n'}
           Класс защиты: {классЗащиты}{'\n'}
@@ -67,8 +65,8 @@ const PersonClass = (props) => {
           Владение инструментами: {инструменты}{'\n'}
           Спасброски: {спасброски}{'\n'}
           Навыки: {навыки}
-          </Text>
-        </View>
+        </Text>
+      </View>
       <ButtonGroup
         variant="contained"
         color="primary"
@@ -80,7 +78,7 @@ const PersonClass = (props) => {
         </Button>
         <Button
           disabled={!btnDisbaled}
-          onClick={() => {value.setPersonClassValue(selectPersonClass); value.nextPage()}}
+          onClick={() => { value.setPersonClassValue(selectPersonClass); value.nextPage() }}
           style={{ margin: 25 }}
         >
           Следующий шаг

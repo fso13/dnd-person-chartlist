@@ -24,20 +24,15 @@ const PersonMagic = (props) => {
     }
   }
 
+  const btnDisbaled = value.spells.size == 0 || (value.spells !== undefined &&
+    Array.from(value.spells?.values(), x => x.length).reduce((a, b) => a + b, 0) == magicClass?.spells.map((item) => getCount(item)).reduce((a, b) => a + b, 0));
 
-  const btnDisbaled = value.spells !== undefined &&
-    Array.from(value.spells.values(), x => x.length).reduce((a, b) => a + b, 0) == magicClass.spells.map((item) => getCount(item)).reduce((a, b) => a + b, 0);
-
-
- 
-
-
-  console.log(magicClass.spells);
   return (
+
 
     <form>
 
-      {magicClass.spells.map((spellsItem) => (
+      {magicClass?.spells?.map((spellsItem) => (
 
         <><div style={{
           paddingTop: 20,
@@ -67,7 +62,7 @@ const PersonMagic = (props) => {
 
                 <Tooltip title={spellItem.text}>
                   <FormControlLabel
-
+                    row
                     control={<Checkbox />}
                     label={spellItem.name}
                     value={spellItem.name}
